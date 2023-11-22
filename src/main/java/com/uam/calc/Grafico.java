@@ -12,9 +12,10 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.xy.DefaultXYDataset;
+import org.jfree.ui.RectangleInsets;
 
 public class Grafico {
-     static void graficar(String funcion) {
+    static void graficar(String funcion) {
         // Crear los datos de la función
         DefaultXYDataset dataset = new DefaultXYDataset();
         double[][] data = generarDatosFuncion(funcion);
@@ -28,6 +29,9 @@ public class Grafico {
                 dataset // Datos del gráfico
         );
 
+        // Configurar el gráfico
+        chart.getXYPlot().setAxisOffset(new RectangleInsets(0, 0, 0, 10));
+
         // Mostrar el gráfico en una ventana
         ChartFrame frame = new ChartFrame("Gráfico", chart);
         frame.pack();
@@ -35,28 +39,29 @@ public class Grafico {
     }
 
     // Generar los datos de la función ingresada
- private static double[][] generarDatosFuncion(String funcion) {
-    int n = 100; // Número de puntos en el gráfico
-    double[][] data = new double[2][n];
+    private static double[][] generarDatosFuncion(String funcion) {
+        int n = 100; // Número de puntos en el gráfico
+        double[][] data = new double[2][n];
 
-    Expression expression = new ExpressionBuilder(funcion)
-                                .variables("x")
-                                .build();
+        Expression expression = new ExpressionBuilder(funcion)
+                .variables("x")
+                .build();
 
-    UnivariateFunction f = new UnivariateFunction() {
-        @Override
-        public double value(double x) {
-            expression.setVariable("x", x);
-            return expression.evaluate();
+        UnivariateFunction f = new UnivariateFunction() {
+            @Override
+            public double value(double x) {
+                expression.setVariable("x", x);
+                return expression.evaluate();
+            }
+        };
+
+        for (int i = 0; i < n; i++) {
+            double x = i - (n / 2);
+            double y = f.value(x);
+            data[0][i] = x;
+            data[1][i] = y;
         }
-    };
 
-    for (int i = 0; i < n; i++) {
-        double x = i - (n / 2);
-        double y = f.value(x);
-        data[0][i] = x;
-        data[1][i] = y;
+        return data;
     }
-
-    return data;
-}}
+}
