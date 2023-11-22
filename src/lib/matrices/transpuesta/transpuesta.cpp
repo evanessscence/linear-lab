@@ -1,53 +1,77 @@
 #include<iostream>
 #include<windows.h>
 #include<conio.h>
-#include"archivo.h"
 #include <fstream>
-
+#include<vector>
 using namespace std;
 
 int filas, tam;
 
+void abrirDimensiones(int &fil, int &col){
+    ifstream filas("filas.txt");
+    ifstream columnas("columnas.txt");
+    filas >> fil;
+    columnas >> col;
+}
+
+void leerMatriz(vector<vector<double>> &matriz) {
+    ifstream file("matriz.txt");
+    int filas = matriz.size();
+    int columnas = matriz[0].size();
+    for (int i = 0; i < filas; i++){
+        for (int j = 0; j < columnas; j++){
+            file >> matriz[i][j];
+        }
+    }
+}
+
+void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
+    ofstream file(nombreArchivo);
+    int filas = matriz.size();
+    int columnas = matriz[0].size();
+    for (int i = 0; i < filas; i++){
+        for (int j = 0; j < columnas; j++){
+            file << matriz[i][j] << " ";
+        }
+        file << endl;
+    }
+}
+
 void transpuestaMatriz()
 {
-	SetConsoleOutputCP(CP_UTF8);
 	
-	abrirDimensiones(filas,tam);
-	float matriz[filas][tam];
-	fstream archivo("matriz.txt");
+    FreeConsole();
+	ofstream file("resultado.txt");
+    int filas, tam;
+    abrirDimensiones(filas, tam);
+    
+    vector<vector<double>> matriz(filas, vector<double>(tam));
+    leerMatriz(matriz);
 
-	for (int i=0;i<filas;i++)
-	{
-		for (int j=0;j<tam;j++)
-		{
-			archivo >> matriz[i][j];
-		}
-	}
-	
-	cout << "> MATRIZ INGRESADA" << endl;
-	for (int p=0;p<filas;p++)
-	{
-	for (int s=0;s<tam;s++)
-	{
-		cout <<matriz[p][s]<<"	";
-	}
-	cout << "\n\n";
-	}
-	  
-   cout << "> MATRIZ TRANSPUESTA: " << endl;
-   
-   ofstream file("transpuesta.txt");
+    file << "> MATRIZ INGRESADA" << endl;
+    for (int p = 0; p < filas; p++)
+    {
+        for (int s = 0; s < tam; s++)
+        {
+            file << matriz[p][s] << "    ";
+        }
+        file << "\n\n";
+    }
 
-   for (int d=0;d<filas;d++)
+    file << "> MATRIZ TRANSPUESTA: " << endl;
+
+    
+	for (int d=0;d<filas;d++)
   {
   	for (int m=0; m<tam; m++)
   	{
-  	cout << matriz[m][d] << "	";
+  	file << matriz[m][d] << "	";
   	file << matriz[m][d] << " ";
 	  }
-	cout << endl;
+	file << endl;
    }
 }
+
 
 int main()
 {
