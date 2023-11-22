@@ -1,0 +1,1 @@
+f(a)*f(b) = 0. Asegúrate de haber incluido intervalos cercanos a la raíz y que ambos límites tengan el mismo signo. Es posible que esta función no tenga raíces.

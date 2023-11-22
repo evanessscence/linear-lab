@@ -1,0 +1,1 @@
+Esta matriz no es invertible porque su determinante es 0 y/o tiene menos pivotes que entradas.
