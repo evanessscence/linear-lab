@@ -10,10 +10,10 @@ La calculadora de Álgebra Lineal incluye las siguientes funcionalidades:
 - Cálculo de determinantes de matrices.
 - Cálculo de matrices identidad.
 - Obtención de matrices triangulares superiores.
-- Resolución de ecuaciones mediante el método de la bisección.
-- Resolución de ecuaciones mediante el método de Newton-Raphson.
-- Resolución de ecuaciones mediante el método de la falsa posición.
-- Resolución de ecuaciones mediante el método de la secante.
+- Raíces de una función mediante el método de la bisección.
+- Raíces de una función mediante el método de Newton-Raphson.
+- Raíces de una función mediante el método de la falsa posición.
+- Raíces de una función mediante el método de la secante.
 - Graficadora de la función para métodos numéricos.
 - Parser de ecuaciones monovariables.
 
