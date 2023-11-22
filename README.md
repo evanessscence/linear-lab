@@ -14,6 +14,8 @@ La calculadora de Álgebra Lineal incluye las siguientes funcionalidades:
 - Resolución de ecuaciones mediante el método de Newton-Raphson.
 - Resolución de ecuaciones mediante el método de la falsa posición.
 - Resolución de ecuaciones mediante el método de la secante.
+- Graficadora de la función para métodos numéricos.
+- Parser de ecuaciones monovariables.
 
 ## Requisitos
 
@@ -22,4 +24,4 @@ La calculadora de Álgebra Lineal incluye las siguientes funcionalidades:
 
 ## Cómo utilizar
 - Ejecutando el archivo JAR en \target.
-- Para ejecutarlo desde un IDE, ejecuta Calc.java (src\main\java\com\uam\calc).
+- Para ejecutarlo desde un IDE, actualiza las dependencias desde Maven (mvn install/mvn build) y ejecuta la clase main -> Calc.java (src\main\java\com\uam\calc).
