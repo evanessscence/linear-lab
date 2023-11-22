@@ -1,160 +1,122 @@
 #include <iostream>
 #include<conio.h>
 #include<windows.h>
-#include "archivo.h"
 #include<vector>
+#include<fstream>
 using namespace std;
 
-// Imprimir matriz
-void imprimirMatriz(double **matriz, int filas, int columnas) {
-    for (int i = 0; i < filas; ++i) {
-        for (int j = 0; j < columnas; ++j) {
+void abrirDimensiones(int &fil, int &col){
+    ifstream filas("filas.txt");
+    ifstream columnas("columnas.txt");
+    filas >> fil;
+    columnas >> col;
+}
+
+void leerMatriz(vector<vector<double>> &matriz) {
+    ifstream file("matriz.txt");
+    int filas = matriz.size();
+    int columnas = matriz[0].size();
+    for (int i = 0; i < filas; i++){
+        for (int j = 0; j < columnas; j++){
+            file >> matriz[i][j];
+        }
+    }
+}
+
+void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
+    ofstream file(nombreArchivo);
+    int filas = matriz.size();
+    int columnas = matriz[0].size();
+    for (int i = 0; i < filas; i++){
+        for (int j = 0; j < columnas; j++){
+            file << matriz[i][j] << " ";
+        }
+        file << endl;
+    }
+}
+// Función para imprimir una matriz
+void imprimirMatriz(vector<vector<double>>& matriz) {
+    int filas = matriz.size();
+    int columnas = matriz[0].size();
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
             cout << matriz[i][j] << "\t";
         }
         cout << endl;
     }
-    cout << endl;
 }
 
-// Encontrar y mostrar los pivotes en la matriz original
-void encontrarPivotesOriginales(double **matriz, int filas, int columnas) {
-	
-    cout << "Pivotes en la matriz original:" << endl;
-    for (int i = 0; i < filas; ++i) {
-        for (int j = 0; j < columnas; ++j) {
-            if (matriz[i][j] != 0) {
-                cout << "(" << i + 1 << ", " << j + 1 << "): " << matriz[i][j] << endl;
-                break;
+int obtenerRREF(vector<vector<double>>& matrizAumentada) {
+  int filas = matrizAumentada.size();
+    int columnas = matrizAumentada[0].size();
+    int numPivotes = 0;
+	ofstream archivo("pasos.txt");
+    for (int i = 0; i < filas; i++) {
+        // Encontrar la fila con el valor máximo en la columna actual
+        int filaMax = i;
+        for (int k = i + 1; k < filas; k++) {
+            if (abs(matrizAumentada[k][i]) > abs(matrizAumentada[filaMax][i])) {
+                filaMax = k;
+            }
+            archivo << "- Encontrar la fila con el valor máximo en la columna actual. La fila encontrada es F"<<filaMax<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
+        }
+		  
+        // Intercambiar filas para tener el valor máximo en la fila actual
+        if (filaMax != i) {
+            swap(matrizAumentada[i], matrizAumentada[filaMax]);
+            archivo << "- Intercambiar filas para tener el valor máximo en la fila actual. F"<<i<<"-> F"<<filaMax<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
+        }
+
+        // Verificar si el elemento diagonal principal es un pivote
+        if (matrizAumentada[i][i] != 0) {
+            numPivotes++;
+             archivo << "- Verificar si el elemento diagonal principal es distinto a 0 para ser un pivote. ("<<matrizAumentada[i][i]<<")"<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
+        }
+
+        // Hacer que el elemento diagonal principal sea igual a 1
+        double pivot = matrizAumentada[i][i];
+        if (pivot != 0) {
+            for (int j = i; j < columnas; j++) {
+                matrizAumentada[i][j] /= pivot;
+                 archivo << "- Hacer que el elemento diagonal principal sea igual a 1 ("<<matrizAumentada[i][j]<<"/"<<pivot<<")"<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
             }
         }
-    }
-    cout << endl;
-}
 
-int k=0;
-// Encontrar y mostrar los pivotes en la matriz rref
-void encontrarPivotesRREF(double **matriz, int filas, int columnas) {
-    cout << "Pivotes en la matriz reducida:" << endl;
-    for (int i = 0; i < filas; ++i) {
-        for (int j = 0; j < columnas; ++j) {
-            if (matriz[i][j] == 1) {
-                cout << "( " << i + 1 << ", " << j + 1 << "): " << matriz[i][j] << endl;
-                k++;
-                break;
-            }
-        }
-    }
-    cout << endl;
-}
-
-// Intercambiar dos filas de la matriz
-void intercambiarFilas(double **matriz, int fila1, int fila2, int columnas) {
-    for (int j = 0; j < columnas; ++j) {
-        double temp = matriz[fila1][j];
-        matriz[fila1][j] = matriz[fila2][j];
-        matriz[fila2][j] = temp;
-    }
-}
-
-// Hacer cero los elementos por debajo del pivote
-void hacerCeroAbajo(double **matriz, int fila_pivote, int columna_pivote, int filas, int columnas) {
-    for (int i = fila_pivote + 1; i < filas; ++i) {
-        double factor = -matriz[i][columna_pivote] / matriz[fila_pivote][columna_pivote];
-        for (int j = columna_pivote; j < columnas; ++j) {
-            matriz[i][j] += factor * matriz[fila_pivote][j];
-        }
-    }
-}
-
-// Hacer cero los elementos por encima del pivote
-void hacerCeroArriba(double **matriz, int fila_pivote, int columna_pivote, int columnas) {
-    for (int i = fila_pivote - 1; i >= 0; --i) {
-        double factor = -matriz[i][columna_pivote] / matriz[fila_pivote][columna_pivote];
-        for (int j = columna_pivote; j < columnas; ++j) {
-            matriz[i][j] += factor * matriz[fila_pivote][j];
-        }
-    }
-}
-
-// Llevar la matriz a su forma escalonada reducida por filas
-void rref(double **matriz, int filas, int columnas) {
-    int fila_actual = 0;
-
-    for (int columna_actual = 0; columna_actual < columnas; ++columna_actual) {
-        if (fila_actual >= filas) {
-            break;
-        }
-
-        int fila_pivote = fila_actual;
-        while (matriz[fila_pivote][columna_actual] == 0) {
-            ++fila_pivote;
-            if (fila_pivote == filas) {
-                fila_pivote = fila_actual;
-                ++columna_actual;
-                if (columna_actual == columnas) {
-                    break;
+        // Eliminación hacia abajo
+        for (int k = 0; k < filas; k++) {
+            if (k != i) {
+                double factor = matrizAumentada[k][i];
+                for (int j = i; j < columnas; j++) {
+                    matrizAumentada[k][j] -= factor * matrizAumentada[i][j];
+                    archivo << "- Eliminación hacia abajo ("<<matrizAumentada[k][j]<<"-"<<factor<<"*"<<matrizAumentada[i][j]<<")"<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
                 }
             }
         }
-
-        if (matriz[fila_pivote][columna_actual] != 0) {
-            intercambiarFilas(matriz, fila_actual, fila_pivote, columnas);
-            double pivot = matriz[fila_actual][columna_actual];
-            for (int j = columna_actual; j < columnas; ++j) {
-                matriz[fila_actual][j] /= pivot;
-            }
-            hacerCeroAbajo(matriz, fila_actual, columna_actual, filas, columnas);
-            hacerCeroArriba(matriz, fila_actual, columna_actual, columnas);
-            ++fila_actual;
-        }
     }
-}
 
-bool validacionEntrada(int a);
+    return numPivotes;
+    
+}
 
 int main() {
     int filas, columnas;
     SetConsoleOutputCP(CP_UTF8);
     
     abrirDimensiones(filas, columnas);
+ 	vector<vector<double>> matriz(filas, vector<double>(columnas));
+    leerMatriz(matriz);
 
+    obtenerRREF(matriz);
 
-    ofstream archivo("matriz.txt");
+  /*  cout << "\n> MATRIZ ESCALONADA REDUCIDA" << endl << endl;
+    imprimirMatriz(matriz);*/
+    
+    int k = obtenerRREF(matriz);
+    fstream archivo("resultado.txt");
 
-    for (int i = 0; i < filas; ++i) {
-        for (int j = 0; j < columnas; ++j) {
-            archivo >> matriz[i][j];
-        }
-    }
-
-	system("cls");
-    cout << "\n\n> MATRIZ ORIGINAL" << endl << endl;
-    imprimirMatriz(matriz, filas, columnas);
-    encontrarPivotesOriginales(matriz, filas, columnas);
-
-    rref(matriz, filas, columnas);
-
-    cout << "\n> MATRIZ ESCALONADA REDUCIDA" << endl << endl;
-    imprimirMatriz(matriz, filas, columnas);
-    encontrarPivotesRREF(matriz, filas, columnas);
-	cout << "Esta matriz " << filas << "x" << columnas << " tiene " << k << " pivote(s)." << endl;
-	if ((k == filas) && (k == columnas))
-	{
-		cout << "Por tanto, es invertible.";
-	}
-	else 
-	{
-		cout << "Por tanto, NO es invertible.";	
-	}
-    // Liberar memoria
-    for (int i = 0; i < filas; ++i) {
-        delete[] matriz[i];
-    }
-    delete[] matriz;
+		archivo << "Esta matriz " << filas << "x" << columnas << " tiene " << k << " pivote(s). Por tanto, es invertible." << endl;
+		guardarArchivo(matriz, "resultado.txt");
 
     return 0; }
     
-
-
-    getch();
-} 
