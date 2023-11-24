@@ -137,7 +137,7 @@
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\a n n a\Documents\UAM\SISTEMAS\SEMESTRE IV\Calculadora\calc\ICONOS\IMG_1448.PNG"/>
+                  <Image iconType="3" name="/IMG_1448.PNG"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="   Determinante"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -166,7 +166,7 @@
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\a n n a\Documents\UAM\SISTEMAS\SEMESTRE IV\Calculadora\calc\ICONOS\IMG_1450.PNG"/>
+                  <Image iconType="3" name="/IMG_1450.PNG"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="   Triangular Superior"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -191,7 +191,7 @@
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\a n n a\Documents\UAM\SISTEMAS\SEMESTRE IV\Calculadora\calc\ICONOS\IMG_1449.PNG"/>
+                  <Image iconType="3" name="/IMG_1449.PNG"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="   Matriz Identidad"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -216,7 +216,7 @@
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\a n n a\Documents\UAM\SISTEMAS\SEMESTRE IV\Calculadora\calc\ICONOS\IMG_1451.PNG"/>
+                  <Image iconType="3" name="/IMG_1451.PNG"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="   Inversa"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -242,7 +242,7 @@
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\a n n a\Documents\UAM\SISTEMAS\SEMESTRE IV\Calculadora\calc\ICONOS\IMG_1452.PNG"/>
+                  <Image iconType="3" name="/IMG_1452.PNG"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="   Transpuesta"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

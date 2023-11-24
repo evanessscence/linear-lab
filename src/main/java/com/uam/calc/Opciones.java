@@ -62,7 +62,7 @@ public class Opciones extends javax.swing.JFrame {
 
         Determinante.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
         Determinante.setForeground(new java.awt.Color(102, 102, 102));
-        Determinante.setIcon(new javax.swing.ImageIcon("C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\ICONOS\\IMG_1448.PNG")); // NOI18N
+        Determinante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG_1448.PNG"))); // NOI18N
         Determinante.setText("   Determinante");
         Determinante.setBorder(null);
         Determinante.setBorderPainted(false);
@@ -88,7 +88,7 @@ public class Opciones extends javax.swing.JFrame {
 
         TSA.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
         TSA.setForeground(new java.awt.Color(102, 102, 102));
-        TSA.setIcon(new javax.swing.ImageIcon("C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\ICONOS\\IMG_1450.PNG")); // NOI18N
+        TSA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG_1450.PNG"))); // NOI18N
         TSA.setText("   Triangular Superior");
         TSA.setBorder(null);
         TSA.setDefaultCapable(false);
@@ -112,7 +112,7 @@ public class Opciones extends javax.swing.JFrame {
 
         Identidad.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
         Identidad.setForeground(new java.awt.Color(102, 102, 102));
-        Identidad.setIcon(new javax.swing.ImageIcon("C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\ICONOS\\IMG_1449.PNG")); // NOI18N
+        Identidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG_1449.PNG"))); // NOI18N
         Identidad.setText("   Matriz Identidad");
         Identidad.setBorder(null);
         Identidad.setDefaultCapable(false);
@@ -136,7 +136,7 @@ public class Opciones extends javax.swing.JFrame {
 
         Inversa.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
         Inversa.setForeground(new java.awt.Color(102, 102, 102));
-        Inversa.setIcon(new javax.swing.ImageIcon("C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\ICONOS\\IMG_1451.PNG")); // NOI18N
+        Inversa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG_1451.PNG"))); // NOI18N
         Inversa.setText("   Inversa");
         Inversa.setBorder(null);
         Inversa.setBorderPainted(false);
@@ -161,7 +161,7 @@ public class Opciones extends javax.swing.JFrame {
 
         Transpuesta.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
         Transpuesta.setForeground(new java.awt.Color(102, 102, 102));
-        Transpuesta.setIcon(new javax.swing.ImageIcon("C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\ICONOS\\IMG_1452.PNG")); // NOI18N
+        Transpuesta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG_1452.PNG"))); // NOI18N
         Transpuesta.setText("   Transpuesta");
         Transpuesta.setBorder(null);
         Transpuesta.setBorderPainted(false);
