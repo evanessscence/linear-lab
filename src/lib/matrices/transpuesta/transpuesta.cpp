@@ -41,7 +41,9 @@ void transpuestaMatriz()
 {
 	
     FreeConsole();
-	ofstream file("resultado.txt");
+    ofstream abrir("resultado.txt"); abrir << " ";
+	ofstream file("resultado.txt",std::ios::app);
+	file << "Una matriz se transpone cuando se intercambian sus filas por sus columnas.\n\n";
     int filas, tam;
     abrirDimensiones(filas, tam);
     
