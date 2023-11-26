@@ -24,7 +24,7 @@ void leerMatriz(vector<vector<double>> &matriz) {
 }
 
 void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
-    ofstream file(nombreArchivo);
+    ofstream file(nombreArchivo,std::ios::app);
     int filas = matriz.size();
     int columnas = matriz[0].size();
     for (int i = 0; i < filas; i++){
@@ -36,40 +36,47 @@ void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
 }
 // Función para imprimir una matriz
 void imprimirMatriz(vector<vector<double>>& matriz) {
+	ofstream file("resultado.txt",std::ios::app);
     int filas = matriz.size();
     int columnas = matriz[0].size();
 
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
-            cout << matriz[i][j] << "\t";
+            file << matriz[i][j] << " ";
         }
-        cout << endl;
+        file << endl;
+        
     }
 }
 
 // Función para realizar la eliminación Gaussiana y obtener la RREF de la matriz aumentada
 int obtenerRREF(vector<vector<double>>& matrizAumentada) {
+ofstream archivo("resultado.txt",std::ios::app);
   int filas = matrizAumentada.size();
     int columnas = matrizAumentada[0].size();
     int numPivotes = 0;
 
-    for (int i = 0; i < filas; i++) {
+	archivo << "Realizar la eliminación Gaussiana para obtener la matriz identidad.";
+     for (int i = 0; i < filas; i++) {
         // Encontrar la fila con el valor máximo en la columna actual
         int filaMax = i;
         for (int k = i + 1; k < filas; k++) {
             if (abs(matrizAumentada[k][i]) > abs(matrizAumentada[filaMax][i])) {
                 filaMax = k;
             }
+            archivo << "- Encontrar la fila con el valor máximo en la columna actual. La fila encontrada es F"<<filaMax<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
         }
-
+		  
         // Intercambiar filas para tener el valor máximo en la fila actual
         if (filaMax != i) {
             swap(matrizAumentada[i], matrizAumentada[filaMax]);
+            archivo << "- Intercambiar filas para tener el valor máximo en la fila actual. F"<<i<<"-> F"<<filaMax<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
         }
 
         // Verificar si el elemento diagonal principal es un pivote
         if (matrizAumentada[i][i] != 0) {
             numPivotes++;
+             archivo << "- Verificar si el elemento diagonal principal es distinto a 0 para ser un pivote. ("<<matrizAumentada[i][i]<<")"<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
         }
 
         // Hacer que el elemento diagonal principal sea igual a 1
@@ -77,6 +84,7 @@ int obtenerRREF(vector<vector<double>>& matrizAumentada) {
         if (pivot != 0) {
             for (int j = i; j < columnas; j++) {
                 matrizAumentada[i][j] /= pivot;
+                 archivo << "- Hacer que el elemento diagonal principal sea igual a 1 ("<<matrizAumentada[i][j]<<"/"<<pivot<<")"<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
             }
         }
 
@@ -86,6 +94,7 @@ int obtenerRREF(vector<vector<double>>& matrizAumentada) {
                 double factor = matrizAumentada[k][i];
                 for (int j = i; j < columnas; j++) {
                     matrizAumentada[k][j] -= factor * matrizAumentada[i][j];
+                    archivo << "- Eliminación hacia abajo ("<<matrizAumentada[k][j]<<"-"<<factor<<"*"<<matrizAumentada[i][j]<<")"<<endl<<matrizAumentada[i][i] << " "<<endl<<endl;
                 }
             }
         }
@@ -137,11 +146,18 @@ int main() {
 
     int n;
     abrirDimensiones(n,n);
-
+	ofstream abrir("resultado.txt"); abrir << " ";
+	
     vector<vector<double>> matrizAumentada(n, vector<double>(2 * n));
     leerMatriz(matrizAumentada);
 
     double determinante = calcularDeterminante(matrizAumentada);
+    ofstream inversaarch("resultado.txt",std::ios::app);
+    
+    if (determinante==0) {
+	inversaarch << "Esta matriz no es invertible porque su determinante es 0 y/o tiene menos pivotes que entradas." << endl;
+    exit(0);
+	}
     // Inicializar la matriz identidad en la matriz aumentada
     
     for (int i = 0; i < n; i++) {
@@ -156,21 +172,11 @@ int main() {
 
     // Calcular la RREF de la matriz aumentada y contar los pivotes
 
-    int numPivotes = obtenerRREF(matrizAumentada);
-	
-	ofstream inversaarch("resultado.txt");
-    // Verificar si la matriz es invertible
-    if ((numPivotes == n) && (determinante!=0)) {
-        cout << "Esta matriz es invertible." << endl;
-       guardarArchivo(matrizAumentada, "resultado.txt");
-    cout << "La matriz inversa es:" << endl;
-        imprimirMatriz(matrizAumentada);
-    } else {
-        inversaarch << "Esta matriz no es invertible porque su determinante es 0 y/o tiene menos pivotes que entradas." << endl;
-    }
-    
-    
+    int numPivotes = obtenerRREF(matrizAumentada);	
 
+    guardarArchivo(matrizAumentada, "resultado.txt");
+    inversaarch << "La matriz inversa es:" << endl;
+ 
     return 0;
 }
 
