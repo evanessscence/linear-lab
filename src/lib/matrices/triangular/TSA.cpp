@@ -27,7 +27,7 @@ void leerMatriz(vector<vector<double>> &matriz) {
 }
 
 void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
-    ofstream file(nombreArchivo);
+    ofstream file(nombreArchivo,std::ios::app);
     int filas = matriz.size();
     int columnas = matriz[0].size();
     for (int i = 0; i < filas; i++){
@@ -42,7 +42,7 @@ void make_upper_triangular(vector<vector<double> >& matrix) {
     int fils = matrix.size();
     int cols = matrix[0].size() - 1;  // Excluimos la última columna
 	
-	ofstream archivo("resultado.txt");
+	ofstream archivo("resultado.txt",std::ios::app);
     // Realiza eliminación gaussiana para convertir en triangular superior
     for (int i = 0; i < fils - 1; ++i) {
         for (int k = i + 1; k < fils; ++k) {
@@ -65,7 +65,7 @@ void make_upper_triangular(vector<vector<double> >& matrix) {
 
 
 int main() {
-	
+	ofstream abrir("resultado.txt"); abrir << " ";
     int fils, cols;
     abrirDimensiones(fils,cols);
 
@@ -75,7 +75,7 @@ int main() {
 
     // Llama a la función para convertir en triangular superior
     make_upper_triangular(matrix);
-	ofstream arch("sistema.txt");
+	ofstream arch("resultado.txt",std::ios::app);
     // Muestra la matriz aumentada triangular superior resultante
     arch << "\nMatriz aumentada triangular superior resultante:" << endl;
     for (int i = 0; i < fils; ++i) {
