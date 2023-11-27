@@ -25,7 +25,7 @@ void leerMatriz(vector<vector<double>> &matriz) {
 }
 
 void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
-    ofstream file(nombreArchivo);
+    ofstream file(nombreArchivo,ios::app);
     int filas = matriz.size();
     int columnas = matriz[0].size();
     for (int i = 0; i < filas; i++){
@@ -36,12 +36,16 @@ void guardarArchivo(vector<vector<double>> &matriz, string nombreArchivo) {
     }
 }
 // Función para calcular la determinante de una matriz 2x2
-double calcularDeterminante2x2(const vector<vector<double>>& matriz) {
-    return matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
+void calcularDeterminante2x2(const vector<vector<double>>& matriz) {
+	ofstream resultado("resultado.txt",ios::app);
+	double result = matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
+	resultado << matriz[0][0] << " * " << matriz[1][1] << " - " << matriz[0][1] << " * " << matriz[1][0];
+	resultado << "\n\nLa determinante de esta matriz es " << result;
 }
 
 // Función para calcular la determinante de una matriz utilizando el método de cofactores
 double calcularDeterminante(vector<vector<double>>& matriz) {
+	ofstream resultado("resultado.txt",ios::app);
     int n = matriz.size();
 
     // Caso base: Matriz 1x1
@@ -52,26 +56,38 @@ double calcularDeterminante(vector<vector<double>>& matriz) {
     double determinante = 0.0;
     vector<vector<double>> submatriz(n - 1, vector<double>(n - 1));
 
-    // Iterar a través de la primera fila para calcular el cofactor
+    resultado << "\n\n- Iterar a través de la primera fila para calcular el cofactor\n";
     for (int i = 0; i < n; ++i) {
-        // Construir la submatriz excluyendo la primera fila y la columna i
+    	resultado << "\n	> Iteración " << i << endl;
+        resultado << "\n\n- Construir la submatriz excluyendo la primera fila y la columna " << i+1 << " ";
         for (int j = 1; j < n; ++j) {
             int col = 0;
             for (int k = 0; k < n; ++k) {
                 if (k != i) {
                     submatriz[j - 1][col] = matriz[j][k];
+                    resultado << "(" << submatriz[j - 1][col] << " = " << matriz[j][k] << ")" << endl;
                     col++;
                 }
             }
         }
 
-        // Calcular el cofactor y alternar el signo
-        double cofactor = matriz[0][i] * calcularDeterminante(submatriz);
+        
+        double cofactor = matriz[0][i] * calcularDeterminante(submatriz);  
+		double det = calcularDeterminante(submatriz);     
         if (i % 2 == 1) {
             cofactor = -cofactor;
         }
-
+       resultado << "\n\n- Calcular el cofactor y alternar el signo ("<< matriz[0][i] <<"*" << det << "). \nEl cofactor es: " << cofactor << endl;
+		
+		 resultado << "\n\n- Sumar: "<< determinante << " + " << cofactor << endl;
         determinante += cofactor;
+      resultado << "\n"; 
+    for (int i = 0; i < n; ++i) {
+	for (int j = 0; j < n; ++j) {
+		resultado << matriz[i][j] << "	";
+	}
+	resultado << "\n\n";
+	}
     }
 
     return determinante;
@@ -83,7 +99,8 @@ int main() {
     int n;
     abrirDimensiones(n,n);
 
-
+	ofstream abrir("resultado.txt"); abrir << "Cálculo de la determinante utilizando cofactores.\n";
+	
     vector<vector<double>> matriz(n, vector<double>(n));
     leerMatriz(matriz);
     
@@ -95,10 +112,10 @@ int main() {
     double determinante = calcularDeterminante(matriz);
 
     // Guardar determinante en un archivo .txt
-    ofstream determinantearch("resultado.txt");
+    ofstream determinantearch("resultado.txt",ios::app);
     
     if (n < 1) {
-        determinantearch << "El tamaño de la matriz debe ser al menos 1x1." << endl;
+        determinantearch << "\n\nEl tamaño de la matriz debe ser al menos 1x1." << endl;
         return 1;
     }
     
