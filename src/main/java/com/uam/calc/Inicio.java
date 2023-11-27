@@ -923,8 +923,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void Calcular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Calcular1ActionPerformed
-      String filasArch = Filas2.toString();
-        String columnasArch = Columnas2.toString();
+      String filasArch = Filas2.getText();
+        String columnasArch = Columnas2.getText();
         String matrizaArch = matriza.getText();
         String matrizbArch = matrizb.getText();
         Archivos.guardarArchivo(filasArch,"filas.txt");
