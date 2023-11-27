@@ -774,8 +774,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
 
-        String filasArch = Filas.toString();
-        String columnasArch = Columnas.toString();
+        String filasArch = Filas.getText();
+        String columnasArch = Columnas.getText();
         String matrizArch = Matriz.getText();
         Archivos.guardarArchivo(filasArch,"filas.txt");
         Archivos.guardarArchivo(columnasArch,"columnas.txt");
@@ -803,11 +803,7 @@ public class Inicio extends javax.swing.JFrame {
         Archivos.guardarArchivo(bArch,"b.txt");
         Archivos.guardarArchivo(eArch,"e.txt");
         Archivos.ejecutarArchivo("Biseccion.exe");
-        try {
-            Thread.sleep(1000); // 5000 milisegundos (5 segundos)
-        } catch (InterruptedException e) {
-            // Manejo de excepciones
-        }
+
         JFrame frame = new JFrame("Resultado");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

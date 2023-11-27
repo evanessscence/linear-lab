@@ -17,8 +17,9 @@ public class Resultado extends javax.swing.JFrame {
      */
     public Resultado() {
         initComponents();
-        
-    try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("resultado.txt")))
+                try {
+            Thread.sleep(1000); // 5000 milisegundos (5 segundos)
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("resultado.txt")))
         {
          String line;
          StringBuilder content = new StringBuilder();
@@ -29,6 +30,10 @@ public class Resultado extends javax.swing.JFrame {
          resultado.setText(content.toString());
           } catch (IOException ex) {
           }
+        } catch (InterruptedException e) {
+            // Manejo de excepciones
+        }
+
     
     }
 
