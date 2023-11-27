@@ -2,6 +2,7 @@
 package com.uam.calc;
 import static com.uam.calc.Opciones.abrirResultado;
 import javax.swing.*;
+import static javax.swing.JComponent.TOOL_TIP_TEXT_KEY;
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -104,10 +105,14 @@ public class Inicio extends javax.swing.JFrame {
         OperacionesMatriciales.setBackground(new java.awt.Color(255, 255, 255));
 
         matriza.setColumns(20);
+        matriza.setFont(new java.awt.Font("Inter SemiBold", 0, 12)); // NOI18N
+        matriza.setForeground(new java.awt.Color(0, 102, 102));
         matriza.setRows(5);
         jScrollPane2.setViewportView(matriza);
 
         matrizb.setColumns(20);
+        matrizb.setFont(new java.awt.Font("Inter SemiBold", 0, 12)); // NOI18N
+        matrizb.setForeground(new java.awt.Color(0, 102, 102));
         matrizb.setRows(5);
         jScrollPane3.setViewportView(matrizb);
 
@@ -201,9 +206,28 @@ public class Inicio extends javax.swing.JFrame {
         OperacionesMatriciales.setLayout(OperacionesMatricialesLayout);
         OperacionesMatricialesLayout.setHorizontalGroup(
             OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+            .addGroup(OperacionesMatricialesLayout.createSequentialGroup()
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createSequentialGroup()
+                        .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel27)
+                                .addComponent(Filas2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel25)))
+                        .addGap(41, 41, 41)
+                        .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createSequentialGroup()
+                                .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel28)
+                                    .addComponent(Columnas2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(107, 107, 107))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel26)))
+                        .addGap(53, 53, 53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createSequentialGroup()
                         .addComponent(jRadioButton2)
                         .addGap(18, 18, 18)
@@ -215,29 +239,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createSequentialGroup()
                         .addComponent(Calcular1)
-                        .addGap(174, 174, 174))))
-            .addGroup(OperacionesMatricialesLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(OperacionesMatricialesLayout.createSequentialGroup()
-                        .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26)))
-                    .addGroup(OperacionesMatricialesLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel27)
-                            .addComponent(Filas2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel28)
-                            .addComponent(Columnas2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(107, 107, 107)))
-                .addGap(53, 53, 53))
+                        .addGap(177, 177, 177))))
         );
         OperacionesMatricialesLayout.setVerticalGroup(
             OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +260,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(Filas2))
                 .addGap(7, 7, 7)
                 .addGroup(OperacionesMatricialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperacionesMatricialesLayout.createSequentialGroup()
+                    .addGroup(OperacionesMatricialesLayout.createSequentialGroup()
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,9 +268,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jLabel26)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(Calcular1)
-                .addGap(19, 19, 19))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         PanelCentral.addTab("Operaciones matriciales", OperacionesMatriciales);
@@ -344,12 +346,12 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(MatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(Columnas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         MatricesLayout.setVerticalGroup(
             MatricesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
             .addGroup(MatricesLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
@@ -423,7 +425,7 @@ public class Inicio extends javax.swing.JFrame {
         BiseccionLayout.setHorizontalGroup(
             BiseccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BiseccionLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(BiseccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BiseccionLayout.createSequentialGroup()
                         .addGroup(BiseccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -516,7 +518,7 @@ public class Inicio extends javax.swing.JFrame {
         InterpolacionLayout.setHorizontalGroup(
             InterpolacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InterpolacionLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(InterpolacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InterpolacionLayout.createSequentialGroup()
                         .addGroup(InterpolacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -561,7 +563,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         PanelRaices.addTab("Falsa posición", Interpolacion);
@@ -640,7 +642,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(E1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         PanelRaices.addTab("Newton-Raphson", Newton);
@@ -711,7 +713,7 @@ public class Inicio extends javax.swing.JFrame {
                                         .addComponent(calcular))))
                             .addComponent(jLabel15)))
                     .addComponent(jLabel14))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         SecanteLayout.setVerticalGroup(
             SecanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -738,7 +740,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(b1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         PanelRaices.addTab("Secante", Secante);
@@ -760,7 +762,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelCentral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(PanelCentral, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -821,12 +823,13 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_funcion1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      String funcionArch = funcion.getText();
+      String funcionArch2 = funcion1.getText();
+      Grafico.graficar(funcionArch2);
         String aArch = a.getText();
         String bArch = b.getText();
         String eArch = E.getText();
-        Grafico.graficar(funcionArch);
-        Archivos.guardarArchivo(funcionArch,"funcion.txt");
+        
+        Archivos.guardarArchivo(funcionArch2,"funcion.txt");
         Archivos.guardarArchivo(aArch,"a.txt");
         Archivos.guardarArchivo(bArch,"b.txt");
         Archivos.guardarArchivo(eArch,"e.txt");
@@ -851,12 +854,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_funcion2ActionPerformed
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
-      String funcionArch = funcion.getText();
+      String funcionArch1 = funcion2.getText();
         String aArch = a.getText();
         String bArch = b.getText();
         String eArch = E.getText();
-        Grafico.graficar(funcionArch);
-        Archivos.guardarArchivo(funcionArch,"funcion.txt");
+        Grafico.graficar(funcionArch1);
+        Archivos.guardarArchivo(funcionArch1,"funcion.txt");
         Archivos.guardarArchivo(aArch,"a.txt");
         Archivos.guardarArchivo(bArch,"b.txt");
         Archivos.guardarArchivo(eArch,"e.txt");
@@ -868,7 +871,7 @@ public class Inicio extends javax.swing.JFrame {
         }
         JFrame frame = new JFrame("Resultado");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
         JPanel panel = new TablaSecante(); 
         frame.add(panel);
 
@@ -881,7 +884,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_funcion3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       String funcionArch = funcion.getText();
+       String funcionArch = funcion3.getText();
         String aArch = a.getText();
         String bArch = b.getText();
         String eArch = E.getText();

@@ -27,6 +27,7 @@ public class TablaNewton extends javax.swing.JPanel {
         cargarDatosEnTabla();
         JFrame resultado = new Resultado();
         resultado.setVisible(true); 
+        
     }
     
        private void cargarDatosEnTabla() {
