@@ -26,7 +26,7 @@ public class Archivos {
             String rutaRecursos = classLoader.getResource("").getPath();
 
             // Concatenar la ruta de la carpeta de recursos con el nombre del archivo
-            String rutaCompleta = "C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\" + nombreArchivo;
+            String rutaCompleta = rutaRecursos + nombreArchivo;
 
             // Crear el archivo y escribir el texto
             BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCompleta));
@@ -45,7 +45,7 @@ public class Archivos {
             String rutaRecursos = classLoader.getResource("").getPath();
 
             // Concatenar la ruta de la carpeta de recursos con la ruta del archivo
-            String rutaCompleta = "C:\\Users\\a n n a\\Documents\\UAM\\SISTEMAS\\SEMESTRE IV\\Calculadora\\calc\\" + rutaDelArchivo;
+            String rutaCompleta = rutaRecursos + rutaDelArchivo;
 
             // Crear un objeto File y abrirlo con el programa predeterminado
             File archivo = new File(rutaCompleta);
