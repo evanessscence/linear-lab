@@ -1,10 +1,8 @@
-# Calculadora de Álgebra Lineal
+# Linear Lab - Calculadora de Álgebra Lineal
 
-Esta calculadora de Álgebra Lineal es una herramienta diseñada para realizar diversas operaciones y cálculos relacionados con matrices y ecuaciones lineales. Proporciona funcionalidades como el cálculo de inversas, determinantes, matriz identidad, matriz triangular superior, así como métodos numéricos como la bisección, el método de Newton-Raphson, la falsa posición y el método de la secante.
+Linear Lab es una herramienta diseñada para realizar diversas operaciones y cálculos relacionados con matrices y ecuaciones lineales. Proporciona funcionalidades como el cálculo de inversas, determinantes, matriz identidad, matriz triangular superior, así como métodos numéricos como la bisección, el método de Newton-Raphson, la falsa posición y el método de la secante.
 
 ## Características
-
-La calculadora de Álgebra Lineal incluye las siguientes funcionalidades:
 
 - Cálculo de inversas de matrices.
 - Cálculo de determinantes de matrices.
